@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager - Jaya Suriya P</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Task Manager</h1>
+  </header>
+
+  <main>
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Enter task..." />
+      <input type="date" id="deadlineInput" />
+      <select id="statusInput">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+      <button id="addTaskBtn">Add Task</button>
+    </div>
+
+    <div class="task-list" id="taskList">
+      {% for task in tasks %}
+      <div class="task-card" data-id="{{ task.id }}">
+        <p><strong>{{ task.task }}</strong> | {{ task.deadline }} | <span class="status">{{ task.status }}</span></p>
+        <div class="buttons">
+          <button class="complete">✓ Complete</button>
+          <button class="delete">🗑 Delete</button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+
+  <footer>
+    <p>Built by Jaya Suriya P | © 2025</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
